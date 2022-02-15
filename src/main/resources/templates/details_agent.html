@@ -1,14 +1,22 @@
 {% extends "./base.html" %}
 
-{% block title %}employe.nom{% endblock %}
+{% block title %} {{employe.nom}} {% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" href="styles/agent.css">
+{% endblock %}
 
 {% block content %}
+    <img src="{{employe.imgUrl}}" id="imageagent">
     <h1>{{employe.nom + " " + employe.prenom}}</h1>
 
     <h2>Les Matériels empruntés : </h2>
-    <div class="materiels">
+    <ul class="materiels list-group">
         {% for materiel in employe.getMaterielsEmpruntes() %}
             <h3>{{materiel.label}}</h3>
+            <li class="list-group-item">{{materiel.label}}
+                <input type="checkbox" checked >
+            </li>
         {% endfor %}
-    </div>
+    </ul>
 {% endblock %}
