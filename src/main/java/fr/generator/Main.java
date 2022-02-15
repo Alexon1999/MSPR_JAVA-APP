@@ -21,6 +21,7 @@ public class Main {
         Utilitaire.CreateAgentsListPageByTemplate(lesEmployes);
         Utilitaire.CreateEachAgentsPageByTemplate(lesEmployes);
         Utilitaire.CreateHTPASSWD(lesEmployes);
+        Utilitaire.createJSONEmployes(lesEmployes);
 
         System.out.println("Finish 😀");
     }

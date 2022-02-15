@@ -1,5 +1,6 @@
 package fr.generator.utils;
 
+import com.google.gson.Gson;
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import fr.generator.html.Formatter;
@@ -51,7 +52,7 @@ public class Utilitaire {
         }
     }
 
-    // Pebble Template Engine
+    // Pebble Template Engine (moteur de template)
     // https://pebbletemplates.io/
     public static void CreateAgentsListPageByTemplate(List<Employe> lesEmployes) throws IOException{
         PebbleEngine engine = new PebbleEngine.Builder().build();
@@ -93,6 +94,16 @@ public class Utilitaire {
         }
         FileWriter file = new FileWriter("./web/.htpasswd");
         file.write(String.valueOf(content));
+        file.close();
+    }
+
+    public static String pojoToJson(Object obj){
+        return new Gson().toJson(obj);
+    }
+
+    public static void createJSONEmployes(List<Employe> lesEmployes) throws IOException{
+        FileWriter file = new FileWriter("./web/data.json");
+        file.write(pojoToJson(lesEmployes));
         file.close();
     }
 }
