@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Start Generating HTML Pages ..... 🤞");
+        System.out.println("Start Generating Files ..... 🤞 \n");
 
         List<Materiel> lesMateriels = Materiel.getLesMaterielsParFichier("./db/liste.txt");
 

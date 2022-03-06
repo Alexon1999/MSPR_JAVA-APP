@@ -6,6 +6,8 @@ import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import fr.generator.html.Formatter;
 import fr.generator.model.Employe;
 import org.apache.commons.codec.digest.Md5Crypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,6 +20,8 @@ import java.util.Map;
 import static j2html.TagCreator.*;
 
 public class Utilitaire {
+
+    private static final Logger logger = LoggerFactory.getLogger(Utilitaire.class);
 
     public static void CreateAgentsListPage(List<Employe> lesEmployes) throws IOException {
         String Content = div(attrs("#employees"),
@@ -69,7 +73,7 @@ public class Utilitaire {
         FileWriter agents = new FileWriter("./web/agents.html");
         agents.write(content);
         agents.close();
-
+        logger.info("agent list page successfully created");
     }
 
     public static void CreateEachAgentsPageByTemplate(List<Employe> lesEmployes) throws IOException{
@@ -86,6 +90,7 @@ public class Utilitaire {
             file.write(content);
             file.close();
         }
+        logger.info("agent details page successfully created");
     }
 
     public static void CreateHTPASSWD(List<Employe> lesEmployes) throws IOException{
@@ -97,6 +102,7 @@ public class Utilitaire {
         FileWriter file = new FileWriter("./web/.htpasswd");
         file.write(String.valueOf(content));
         file.close();
+        logger.info(".htpasswd successfully created");
     }
 
     public static String pojoToJson(Object obj){
@@ -107,5 +113,6 @@ public class Utilitaire {
         FileWriter file = new FileWriter("./web/data.json");
         file.write(pojoToJson(lesEmployes));
         file.close();
+        logger.info("agents into json file successfully created");
     }
 }
