@@ -13,8 +13,8 @@
     <h2>Les Matériels empruntés : </h2>
     <ul class="materiels list-group">
         {% for materiel in employe.getMaterielsEmpruntes() %}
-            <h3>{{materiel.label}}</h3>
-            <li class="list-group-item">{{materiel.label}}
+            <li class="list-group-item">
+                <span>{{materiel.label}}</span>
                 <input type="checkbox" checked >
             </li>
         {% endfor %}

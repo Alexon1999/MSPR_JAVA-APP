@@ -1,25 +1,25 @@
-body{
-    font: italic 1.2em "Roboto", serif;
-}
-
 a{
     color: green;
 }
 nav{
     margin-bottom: 100px;
 }
-nav a img{
+img{
 
     display: block;
     border-radius: 30%;
     margin-left: 20px;
 }
-h1 {
+h1  {
     margin-top: 200px;
     margin-left: 100px;
     text-decoration: underline;
 }
-.employes {
+h2 {
+    margin-top: 200px;
+    margin-left: 100px;
+}
+.materiels {
     margin-top: 20px;
     margin-bottom: 100px;
     margin-left: 100px;
@@ -27,13 +27,13 @@ h1 {
     flex-direction: column;
 
 }
-.employes svg{
-    display: block;
-    float: right;
-    color: red;
+body{
+    font: italic 1.2em "Roboto", serif;
 }
-
-li span{
-    display:flex;
-    float: right;
+#imageagent{
+    position:absolute;
+    right: 0;
+    display: block;
+    clip: rect(20px,55px,100px,0px);
+    border-radius: 0;
 }
