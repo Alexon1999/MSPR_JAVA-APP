@@ -92,8 +92,8 @@ public class Utilitaire {
     public static void CreateHTPASSWD(List<Employe> lesEmployes) throws IOException{
         StringBuilder content = new StringBuilder();
         for(Employe employe : lesEmployes){
-            String encryptPassword = Md5Crypt.md5Crypt(employe.getMdp().getBytes());
-            content.append(employe.getUserName()).append(":").append(encryptPassword).append("\n");
+            String encryptedPassword = Md5Crypt.md5Crypt(employe.getMdp().getBytes());
+            content.append(employe.getUserName()).append(":").append(encryptedPassword).append("\n");
         }
         FileWriter file = new FileWriter("./web/.htpasswd");
         file.write(String.valueOf(content));
