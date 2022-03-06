@@ -1,0 +1,7 @@
+AuthName "Page d’administration protégée. Merci."
+
+AuthType Basic
+
+AuthUserFile /var/www/html/.htpasswd
+
+Require valid-user

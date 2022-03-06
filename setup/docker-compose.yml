@@ -17,9 +17,7 @@ services:
 
   jenkins:
     platform: linux/amd64
-    build:
-      dockerfile: ./Dockerfile
-      context: ./
+    build: jenkins
     networks:
       - jenkins
     environment:
@@ -33,6 +31,14 @@ services:
       - "8080:8080"
       - "50000:50000"
     dns: ["8.8.8.8"]
+
+  apache-webserver:
+    build: apache
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - jenkins
 
 networks:
   jenkins: { }
