@@ -5,7 +5,6 @@ import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import fr.generator.html.Formatter;
 import fr.generator.model.Employe;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.Md5Crypt;
 
 import java.io.FileWriter;
