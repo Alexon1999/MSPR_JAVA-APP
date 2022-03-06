@@ -5,6 +5,8 @@ import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import fr.generator.html.Formatter;
 import fr.generator.model.Employe;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.codec.digest.Md5Crypt;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -90,7 +92,8 @@ public class Utilitaire {
     public static void CreateHTPASSWD(List<Employe> lesEmployes) throws IOException{
         StringBuilder content = new StringBuilder();
         for(Employe employe : lesEmployes){
-            content.append(employe.getUserName()).append(":").append(employe.getMdp()).append("\n");
+            String encryptPassword = Md5Crypt.md5Crypt(employe.getMdp().getBytes());
+            content.append(employe.getUserName()).append(":").append(encryptPassword).append("\n");
         }
         FileWriter file = new FileWriter("./web/.htpasswd");
         file.write(String.valueOf(content));
