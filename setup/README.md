@@ -5,8 +5,12 @@ The custom image is based on jenkins lts, will download the docker cli and conne
 
 # Apache Webserver
 
-This custom image is based on ubuntu/apache2. It will do all the configurations.
-
+This custom image is based on ubuntu. It will do all the configurations (install apache2 and ssh).
+```shell
+docker ps
+# go inside the ubuntu container
+docker exec -it <container_id> bash
+```
 
 ## How to run
 
