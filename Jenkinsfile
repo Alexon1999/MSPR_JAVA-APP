@@ -49,7 +49,7 @@ pipeline {
                 
                 // Mettre les pages html dans un autre dossier dans workspace
                 sh 'mv web/* ../web/'
-                sh 'echo "les pages HTML générés : "'
+                sh 'echo "les fichiers générés : "'
                 sh 'ls ../web'
                 
                 // Nettoyer
