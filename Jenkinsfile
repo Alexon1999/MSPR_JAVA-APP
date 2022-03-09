@@ -52,9 +52,6 @@ pipeline {
                 sh 'echo "les pages HTML générés : "'
                 sh 'ls ../web'
                 
-                // Mettre les fichiers du public dans le web workspace
-                sh 'mv public/* ../web/'
-                
                 // Nettoyer
                 deleteDirectory("../db")
                 deleteDirectory("db")
