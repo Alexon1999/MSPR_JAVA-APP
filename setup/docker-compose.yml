@@ -37,7 +37,7 @@ services:
     restart: always
     ports:
       - "80:80"
-      - "22:22"
+      - "2200:22"
     networks:
       - jenkins
     privileged: true

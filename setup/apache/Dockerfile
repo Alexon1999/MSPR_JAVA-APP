@@ -4,12 +4,12 @@ RUN apt-get update && apt-get install openssh-server sudo vim -y
 RUN apt-get install -y apache2
 
 # ssh configuration file : /etc/ssh/ssh_config
-# authorize SSH connection with root account
-RUN sed -i '/^#/!s/PermitRootLogin .*/PermitRootLogin yes/' /etc/ssh/sshd_config
-# create new user
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
+COPY config/ssh_config /etc/ssh/sshd_config
+# create or change user
+RUN useradd -m -s /bin/bash test
 # username:password
-RUN  echo 'test:test' | chpasswd
+RUN  echo 'test:1234' | chpasswd
+RUN  echo 'root:1234' | chpasswd
 
 RUN service ssh start
 
