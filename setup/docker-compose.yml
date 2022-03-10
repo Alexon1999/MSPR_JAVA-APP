@@ -41,6 +41,8 @@ services:
     networks:
       - jenkins
     privileged: true
+    volumes:
+      - apache-webserver-ssh:/root/.ssh
 
 networks:
   jenkins: { }
@@ -48,3 +50,4 @@ networks:
 volumes:
   jenkins-docker-certs: { }
   jenkins-data: { }
+  apache-webserver-ssh: {}
