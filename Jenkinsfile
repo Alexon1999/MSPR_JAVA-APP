@@ -37,8 +37,8 @@ pipeline {
                 
                 // Réinitialiser
                 deleteAndCreateDirectory("db")
-                deleteAndCreateDirectory("web")
-                deleteAndCreateDirectory("../web")
+                //deleteAndCreateDirectory("web")
+                //deleteAndCreateDirectory("../web")
                 
                 sh 'mv ../db/* db/'
                 //sh 'cd db && ls -a'
@@ -48,14 +48,14 @@ pipeline {
                 sh 'java -jar target/mspr-1.0-SNAPSHOT-jar-with-dependencies.jar'
                 
                 // Mettre les pages html dans un autre dossier dans workspace
-                sh 'mv web/* ../web/'
+                // sh 'mv web/{*,.[^.]*} ../web/'
+                
                 sh 'echo "les fichiers générés : "'
-                sh 'ls ../web'
+                sh 'ls -a web'
                 
                 // Nettoyer
                 deleteDirectory("../db")
                 deleteDirectory("db")
-                deleteDirectory("web")
 
                 sh 'echo "Build finished"'
             }
@@ -65,6 +65,24 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh 'echo "Start Deploy ...."'
+                sshPublisher(
+                    continueOnError: false, failOnError: true,
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: "aws-vm-apache",
+                            verbose: true,
+                            transfers: [
+                                sshTransfer(
+                                    sourceFiles: "web/**/*",
+                                    removePrefix: "web",
+                                    remoteDirectory: "./",
+                                )
+                            ]
+                        )
+                    ]
+                )
+                
+                echo "Deploy Finish :)"
             }
         }
     }
