@@ -65,6 +65,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh 'echo "Start Deploy ...."'
+
                 sshPublisher(
                     continueOnError: false, failOnError: true,
                     publishers: [
